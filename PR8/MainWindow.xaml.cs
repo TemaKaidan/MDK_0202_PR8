@@ -83,5 +83,41 @@ namespace PR8
                 return weatherList;
             }
         }
+
+        private async Task UpdateWeather(string city)
+        {
+            try
+            {
+                int requestCount = WeatherCache.GetRequestCountForToday();
+
+                if (requestCount >= 500)
+                {
+                    var cachedData = WeatherCache.GetWeatherData(city);
+                    if (cachedData.Count > 0)
+                    {
+                        WeatherDataGrid.ItemsSource = cachedData;
+                        MessageBox.Show("Данные для города получены из кэша");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Лимит запросов на сегодня превышен");
+                    }
+                }
+                else
+                {
+                    var weatherData = await FetchWeatherData(city);
+                    WeatherDataGrid.ItemsSource = weatherData;
+
+                    foreach (var data in weatherData)
+                    {
+                        WeatherCache.SaveWeatherData(city, data.DateTime, data.Temperature, data.Pressure, data.Humidity, data.WindSpeed, data.FeelsLike, data.WeatherDescription);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки данных: {ex.Message}");
+            }
+        }
     }
 }
