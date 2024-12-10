@@ -42,11 +42,5 @@ namespace PR8
             await UpdateWeather(city);
             UpdateRequestCount();
         }
-
-        private void UpdateRequestCount()
-        {
-            int requestCount = WeatherCache.GetRequestCountForToday();
-            RequestCountTextBlock.Text = $"Cегодня запросов: {requestCount}";
-        }
     }
 }
