@@ -119,5 +119,11 @@ namespace PR8
                 MessageBox.Show($"Ошибка загрузки данных: {ex.Message}");
             }
         }
+
+        private void UpdateRequestCount()
+        {
+            int requestCount = WeatherCache.GetRequestCountForToday();
+            RequestCountTextBlock.Text = $"Количество запросов сегодня: {requestCount}";
+        }
     }
 }
