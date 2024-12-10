@@ -24,5 +24,10 @@ namespace PR8
         {
             InitializeComponent();
         }
+
+        private void UpdateWeather(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
