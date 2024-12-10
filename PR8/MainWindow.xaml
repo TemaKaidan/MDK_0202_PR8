@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR8"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
         Title="Погода Мохов" Height="550" Width="900" MinHeight="450" MinWidth="800" MaxHeight="650" MaxWidth="948">
 
     <Grid Background="Beige">
         <Grid Background="#67BA80" Height="65" VerticalAlignment="Top">
             <Label Content="Прогнозы погоды" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontStyle="Italic" FontWeight="Bold" Foreground="Beige"/>
+
         </Grid>
 
         <Grid Background="#67BA80" HorizontalAlignment="Left" Width="125" Margin="0,00,0,0"/>
@@ -20,6 +21,17 @@
 
         <Button Content="Обновить" Width="115" Height="25" Margin="5,116,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
             Background="Beige" FontStyle="Italic" FontWeight="Bold" Foreground="Black" FontSize="14" BorderThickness="0" Cursor="Hand" Click="UpdateWeather_Click"/>
+
+        <TextBlock x:Name="RequestCountTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" FontWeight="Bold" Foreground="Beige" Width="109" Margin="16,159,0,0" Height="150">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </TextBlock>
 
         <DataGrid x:Name="WeatherDataGrid" AutoGenerateColumns="False" 
               Margin="130,70,10,10" HeadersVisibility="Column" GridLinesVisibility="None" 

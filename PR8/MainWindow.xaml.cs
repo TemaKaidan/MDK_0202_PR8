@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using PR8.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,10 +30,25 @@ namespace PR8
         public MainWindow()
         {
             InitializeComponent();
+            WeatherCache.InitializeDatabase();
         }
 
-        private void UpdateWeather_Click(object sender, RoutedEventArgs e)
+        private async void UpdateWeather_Click(object sender, RoutedEventArgs e)
         {
+            string city = CityTextBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(city))
+            {
+                MessageBox.Show("Введите название города.");
+                return;
+            }
+
+            
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string defaultCity = "Пермь";
 
         }
     }

@@ -45,7 +45,8 @@ namespace PR8.Classes
             using (var connection = new SQLiteConnection($"Data Source={DbPath};Version=3;"))
             {
                 connection.Open();
-                string insertQuery = @"INSERT INTO WeatherData (City, DateTime, Temperature, Pressure, Humidity, WindSpeed, FeelsLike, WeatherDescription, RequestDate)
+                string insertQuery = @"
+                INSERT INTO WeatherData (City, DateTime, Temperature, Pressure, Humidity, WindSpeed, FeelsLike, WeatherDescription, RequestDate)
                 VALUES (@City, @DateTime, @Temperature, @Pressure, @Humidity, @WindSpeed, @FeelsLike, @WeatherDescription, @RequestDate)";
 
                 var command = new SQLiteCommand(insertQuery, connection);
@@ -95,7 +96,6 @@ namespace PR8.Classes
                     }
                 }
             }
-
             return weatherDataList;
         }
 
