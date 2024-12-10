@@ -31,16 +31,7 @@ namespace PR8
 
         private void UpdateWeather_Click(object sender, RoutedEventArgs e)
         {
-            string city = CityTextBox.Text.Trim();
 
-            if (string.IsNullOrEmpty(city))
-            {
-                MessageBox.Show("Пожалуйста, введите название города.");
-                return;
-            }
-
-            await UpdateWeather(city);
-            UpdateRequestCount();
         }
     }
 }
