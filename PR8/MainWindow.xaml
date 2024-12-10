@@ -19,7 +19,7 @@
              FontSize="16" BorderBrush="Beige" BorderThickness="2"/>
 
         <Button Content="Обновить" Width="115" Height="25" Margin="5,116,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
-            Background="Beige" FontStyle="Italic" FontWeight="Bold" Foreground="Black" FontSize="14" BorderThickness="0" Cursor="Hand" Click="UpdateWeather"/>
+            Background="Beige" FontStyle="Italic" FontWeight="Bold" Foreground="Black" FontSize="14" BorderThickness="0" Cursor="Hand" Click="UpdateWeather_Click"/>
 
         <DataGrid x:Name="WeatherDataGrid" AutoGenerateColumns="False" 
               Margin="130,70,10,10" HeadersVisibility="Column" GridLinesVisibility="None" 

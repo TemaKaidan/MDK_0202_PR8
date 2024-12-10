@@ -20,14 +20,33 @@ namespace PR8
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const string ApiKey = "992a69bc60315f46a2587400486e1f4f";
+        private const string ApiUrl = "https://api.openweathermap.org/data/2.5/forecast?q={0}&appid={1}&units=metric&lang=ru";
+
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void UpdateWeather(object sender, RoutedEventArgs e)
+        private void UpdateWeather_Click(object sender, RoutedEventArgs e)
         {
+            string city = CityTextBox.Text.Trim();
 
+            if (string.IsNullOrEmpty(city))
+            {
+                MessageBox.Show("Пожалуйста, введите название города.");
+                return;
+            }
+
+            await UpdateWeather(city);
+            UpdateRequestCount();
+        }
+
+        private void UpdateRequestCount()
+        {
+            int requestCount = WeatherCache.GetRequestCountForToday();
+            RequestCountTextBlock.Text = $"Cегодня запросов: {requestCount}";
         }
     }
 }
